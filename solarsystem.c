@@ -36,6 +36,21 @@ void reshape(int w, int h) {
 
 void mouseWheel(int wheel, int direction, int x, int y) {
 	angle += direction;
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(angle, aspect, 0.1, 500);
+}
+
+void mouse(int button, int state, int x, int y) {
+	switch (button) {
+		case GLUT_LEFT_BUTTON:
+			break;
+
+		case GLUT_RIGHT_BUTTON:
+			break;
+
+		default:
+	}
 }
 
 int main(int argc, char **argv) {
@@ -48,6 +63,7 @@ int main(int argc, char **argv) {
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutMouseWheelFunc(mouseWheel);
+	glutMouseFunc(mouse);
 	glutMainLoop();
 	return 0;
 }
